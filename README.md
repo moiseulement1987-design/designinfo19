@@ -2,7 +2,7 @@
 
 Adresse URL de mon espace : https://github.com/moiseulement1987-design/designinfo19
 
-Lien vers mon site live (index.html) : url
+Lien vers mon site live (index.html) : https://moiseulement1987-design.github.io/designinfo19/ 
 
 Cet espace est dédié au cours **Design d'Information**.
 
