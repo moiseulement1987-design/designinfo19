@@ -2,6 +2,8 @@
 
 Adresse URL de mon espace : https://github.com/moiseulement1987-design/designinfo19
 
+Lien vers mon site live (index.html) : url
+
 Cet espace est dédié au cours **Design d'Information**.
 
 *[M2 **GSI**, Humanités numériques] (https://humanites-numeriques.univ-paris8.fr/-Master-GSI-), **Univ, Paris 8**.*
