@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Master humanités numériques</title>
+    <style>
+      body {
+        background-color: lightgray;
+      }
+
+      .lato-thin {
+        font-family: "Lato", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+      }
+    </style>
+    <script></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Conditions d'accès</h1>
+    <p>
+      L’accès en master est possible :<br /><br />
+      pour les titulaires d’une licence (180 ECTS) quelle que soit la discipline (accès en master 1) ;<br />
+      pour les titulaires d’un master 1 dans un champ compatible avec celui du diplôme de master (accès en master 2) ;<br />
+      par validation des études, expériences professionnelles ou acquis personnels (décret 2013-756 du 19 août 2013) : accès sans avoir le diplôme requis, compte tenu des études, des acquis personnels et des expériences professionnelles ;<br />
+      par validation des études supérieures accomplies, notamment à l’étranger.<br />
+    </p>
+    <p>
+      Pour tous les candidats au moment de la constitution du dossier d’admission, sont évalués :<br /><br />
+      l’adéquation du parcours antérieur avec la formation (expériences professionnelles et diplômes) ;<br />
+      les motifs justifiant du choix de ce master par le candidat ;<br />
+      les réalisations personnelles (capacités de production et de réflexion dans le domaine des humanités numériques, nouvelles technologies et documentation-information).
+    </p>
+    <p>
+      Cette appréciation est fondée en premier lieu sur l’examen du dossier comprenant :<br /><br />
+      un CV<br />
+      une lettre de motivation<br />
+      toute réalisation personnelle (logiciels, projet)<br />
+      les attestations de travail
+    </p>
+    <h1>Pré requis</h1>
+    <p>
+      Connaissances, pratique et intérêt porté à la culture numérique en termes d’outils, méthodes, littérature, métiers et champs professionnels.
+    </p>
+    <h1>Modalités d’admission</h1>
+    <p>
+      Les modalités d’admission varient en fonction de la situation de chaque candidat (nationalité, pays de résidence, âge, type de diplôme, diplôme français ou étranger, candidat déjà ou jamais inscrit dans l’enseignement supérieur français, …).
+    </p>
+
+    <ul>
+      <li>
+        Pour connaître la procédure qui correspond à votre profil, connectez-vous sur le site de l’Université :
+        <a href="https://appscol.univ-paris8.fr/admission-inscription/">texte à cliqueer</a>
+      </li> 
+    </ul>
+  </body>
+</html>
