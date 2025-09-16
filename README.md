@@ -4,7 +4,7 @@ Adresse URL de mon espace : https://github.com/moiseulement1987-design/designinf
 
 Lien vers mon site live (index.html) : https://moiseulement1987-design.github.io/designinfo19/ 
 
-Lien vers mon site live (MSSI.html) : 
+Lien vers mon site live (MSSI.html) : https://github.com/moiseulement1987-design/designinfo19/blob/main/MGSI.html
 
 Cet espace est dédié au cours **Design d'Information**.
 
