@@ -1,5 +1,5 @@
 
-   <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -141,11 +141,17 @@
             height: 250px;
             background-color: #666;
             margin: -20px -20px 20px -20px;
-            /* Ceci est un placeholder, vous utiliseriez une balise <img> avec CSS object-fit: cover; dans une version réelle. */
-            background-image: url('cv-serveur.webp'); 
-            background-size: cover;
-            background-position: top center;
+            /* Le fond gris reste si l'image ne charge pas */
         }
+        
+        /* NOUVEAU STYLE POUR LA BALISE IMAGE */
+        #photo-placeholder img {
+            width: 100%; /* L'image prend toute la largeur du conteneur */
+            height: 100%; /* L'image prend toute la hauteur du conteneur */
+            object-fit: cover; /* Recadre l'image pour qu'elle remplisse le conteneur sans déformation */
+            display: block; /* Évite les problèmes d'espace blanc sous l'image */
+        }
+        /* FIN NOUVEAU STYLE */
 
         #contact h3 { display: none; }
         
@@ -265,7 +271,9 @@
         <div id="sidebar-content">
 
             <section id="contact">
-                <div id="photo-placeholder"></div>
+                <div id="photo-placeholder">
+                    <img src="ma-photo.webp" alt="Photo de profil de Gérard SERVEUR">
+                    </div>
                 
                 <h3>Contact</h3>
                 <p>+336 01 02 03 04</p>
