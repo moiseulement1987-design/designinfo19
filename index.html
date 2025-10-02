@@ -1,297 +1,34 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Gérard SERVEUR</title>
+<html>
+  <head>
+    <title>Design d'information 2025</title>
     <style>
-        /* --- VARIABLES ET RÉINITIALISATION --- */
-        :root {
-            --primary-color: #333; /* Texte principal */
-            --accent-color: #f7b733; /* Couleur d'accent (Jaune/Orange) */
-            --sidebar-bg: #fffbe6; /* Fond de la colonne droite (Jaune très clair) */
-            --header-photo-bg: #4a4a4a; /* Fond de la section photo (Gris foncé/Marron) */
-            --font-family: 'Arial', sans-serif;
-        }
+      body {
+        background-color:lightgray;
+      }
+      
+      .sancreek-regular {
+        font-family: "Sancreek", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* --- STRUCTURE GÉNÉRALE --- */
-        body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            color: var(--primary-color);
-            background-color: #f4f4f4;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        #cv-container {
-            width: 900px; /* Largeur fixe pour le CV */
-            display: flex; /* Active la disposition en colonnes */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-
-        /* --- COLONNE GAUCHE (Contenu Principal) --- */
-        #primary-content {
-            flex: 2; /* Prend environ 65% de la largeur */
-            padding: 40px 30px;
-            border-right: 1px solid #eee;
-        }
-
-        h1 {
-            font-size: 2em;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        h2 {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
-            font-weight: 400;
-        }
-
-        /* Titres de sections (À propos, Expériences, Formation) */
-        #primary-content h3 {
-            font-size: 1.2em;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        /* À propos de moi */
-        #a-propos p {
-            margin-bottom: 20px;
-            font-style: italic;
-            font-size: 0.95em;
-        }
-
-        /* Expériences et Formation */
-        .experience {
-            margin-bottom: 20px;
-        }
-        .experience p:first-child { /* Date et Titre */
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .experience ul, #formation ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-        .experience ul li::before, #formation ul li::before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-        .experience ul li, #formation ul li {
-            font-size: 0.9em;
-            margin-left: 1em;
-        }
-        .experience p:last-child {
-            font-size: 0.9em;
-            margin-top: 10px;
-            color: #555;
-            line-height: 1.4;
-        }
-
-        /* --- COLONNE DROITE (Barre Latérale) --- */
-        #sidebar-content {
-            flex: 1; /* Prend environ 35% de la largeur */
-            background-color: var(--sidebar-bg);
-            padding: 0; /* Géré par les sections internes */
-        }
-
-        /* Section Contact (Photo et infos) */
-        #contact {
-            background-color: var(--header-photo-bg);
-            padding: 20px;
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        #photo-placeholder {
-            height: 250px;
-            background-color: #666;
-            margin: -20px -20px 20px -20px; /* Étend la photo pour couvrir le haut */
-            /* Ceci est un placeholder, vous utiliseriez une balise <img> avec CSS object-fit: cover; dans une version réelle. */
-            background-image: url('cv-serveur.webp'); 
-            background-size: cover;
-            background-position: top center;
-        }
-
-        #contact h3 { display: none; } /* On cache le titre Contact car il n'est pas visible dans l'image */
-        
-        #contact p {
-            margin-bottom: 8px;
-            font-size: 0.9em;
-        }
-
-        /* Compétences, Qualités, Centres d'intérêt */
-        #sidebar-content section:not(#contact) {
-            padding: 0 20px;
-            margin-bottom: 20px;
-        }
-
-        #sidebar-content h3 {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: var(--primary-color);
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        /* La ligne sous les titres de la colonne droite */
-        #sidebar-content h3:after {
-            content: '';
-            display: block;
-            width: 50px; /* Une petite ligne */
-            height: 2px;
-            background: #ccc;
-            margin-top: 5px;
-        }
-
-        #sidebar-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        #sidebar-content ul li {
-            margin-bottom: 8px;
-            font-size: 0.9em;
-        }
-        #sidebar-content ul li::before {
-            content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
     </style>
-</head>
-<body>
+    <link>
+    <script></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&family=Sancreek&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <h1 class="sancreek-regular">Design d'information 2025</h1>
+    <p>Fichiers et exercices fait en séance.</p>
 
-    <div id="cv-container">
+    <h3>Textes :</h3>
 
-        <div id="primary-content">
-            <h1>Gérard SERVEUR</h1>
-            <h2>Serveuse polyvalente - 6 ans en restauration</h2>
-
-            <section id="a-propos">
-                <h3>À propos de moi</h3>
-                <p>Serveur expérimenté, je possède 6 années d'expérience dans le domaine du service en salle et du bar. J'ai travaillé en tant que serveur dans divers cafés et restaurants, ce qui m'a aidé à améliorer mon efficacité durant le service et à anticiper et de répondre au mieux aux demandes des clients.</p>
-            </section>
-
-            <section id="experiences">
-                <h3>Expériences Professionnelles</h3>
-
-                <div class="experience">
-                    <p><strong>04/2019 - Aujourd'hui - Café du Commerce, Paris - Serveur au bar-restaurant</strong></p>
-                    <ul>
-                        <li>Service en salle</li>
-                        <li>Préparation des tables</li>
-                        <li>Présentation des menus</li>
-                        <li>Conseils pour le choix des plats et des boissons</li>
-                        <li>Préparation de cocktails et autres boissons alcoolisées</li>
-                        <li>Encaissement des règlements des clients</li>
-                    </ul>
-                    <p>Première expérience en tant que serveur au bar. Travailler au café du Commerce m'a aidé à acquérir davantage d'expérience dans la préparation de cocktails, mais aussi à m'adapter à un service multiple.</p>
-                </div>
-
-                <div class="experience">
-                    <p><strong>01/2015 - 04/2019 - Brasserie des Fleurs, Paris - Serveur</strong></p>
-                    <ul>
-                        <li>Service en salle</li>
-                        <li>Préparation des tables</li>
-                        <li>Traitement des commandes</li>
-                        <li>Encaissement des règlements des clients</li>
-                    </ul>
-                    <p>Ma plus longue expérience professionnelle à ce jour. J'ai découvert un peu l'entre univers et développé mon adaptation durant les différents services, tout en répondant au mieux aux demandes des clients aux heures creuses et aux heures de pointe.</p>
-                </div>
-
-                <div class="experience">
-                    <p><strong>02/2014 - 12/2014 - La Belle Vie, Paris - Serveur</strong></p>
-                    <ul>
-                        <li>Service en salle</li>
-                        <li>Préparation des tables</li>
-                        <li>Présentation des plats</li>
-                        <li>Traitement des commandes</li>
-                        <li>Aide à la préparation des desserts</li>
-                    </ul>
-                    <p>Ce premier emploi a contribué à solidifier les bases que j'ai acquises durant mes années de formation. J'ai eu l'occasion de découvrir de nouvelles techniques en cuisine et j'ai également appris à travailler plus rapidement et efficacement.</p>
-                </div>
-            </section>
-
-            <section id="formation">
-                <h3>Formation</h3>
-                <ul>
-                    <li><strong>2013</strong> - Certificat d'Aptitudes Professionnelles - Restaurant - Lycée Saint-Jacques - Paris</li>
-                    <li><strong>2011</strong> - Baccalauréat professionnel hôtellerie-restauration - Lycée hôtelier Voltaire, Paris</li>
-                    <li><strong>2008</strong> - Collège Saint-Dominique, Paris - Brevet des collèges obtenu avec mention assez bien</li>
-                </ul>
-            </section>
-        </div>
-
-        <div id="sidebar-content">
-
-            <section id="contact">
-                <div id="photo-placeholder"></div>
-                
-                <h3>Contact</h3>
-                <p>+336 01 02 03 04</p>
-                <p>votre.nom.prenom@gmail.com</p>
-                <p>Marseille, France</p>
-                <p>linkedin.com/votre-profil</p>
-            </section>
-
-            <section id="competences">
-                <h3>Compétences</h3>
-                <ul>
-                    <li>Traitement des commandes rapide</li>
-                    <li>Habilité à servir de l'alcool</li>
-                    <li>Gestion des stocks et du réassort</li>
-                    <li>Maîtrise de 2 langues étrangères : Anglais (bilingue) et Espagnol (compétence professionnelle)</li>
-                </ul>
-            </section>
-
-            <section id="qualites">
-                <h3>Qualités</h3>
-                <ul>
-                    <li>Polyvalent</li>
-                    <li>Souriant</li>
-                    <li>Dynamique</li>
-                    <li>Capable de gérer les situations stressantes</li>
-                </ul>
-            </section>
-
-            <section id="interets">
-                <h3>Centres d'intérêt</h3>
-                <ul>
-                    <li>Tennis,</li>
-                    <li>Voyages (Espagne, Italie, Royaume-Uni, Grèce, Etats-Unis), lecture</li>
-                </ul>
-            </section>
-        </div>
-
-    </div>
-
-</body>
+    <ul>
+      <li>Un PDF fait avec LaTex : <a href="https://ereyes.github.io/designinfo25/texte/texte_latex_gsi25.pdf">texte_latex_gsi25.pdf (48 Mo.) <i class="fa-solid fa-file-pdf"></i> </a>. </li>
+    </ul>
+    
+  </body>
 </html>
