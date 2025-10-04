@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Europa Expérience - Planning Compte Rendu</title>
+    <title>CV - Chafika ZAAIMI</title>
     <style>
         /* --- VARIABLES ET RÉINITIALISATION --- */
         :root {
-            --dark-blue: #002D62; /* Bleu foncé pour les titres et le pied de page */
-            --red-accent: #E53935; /* Rouge vif pour l'accent et la boîte principale */
-            --light-text: #FFFFFF; /* Texte blanc */
-            --dark-text: #333333; /* Texte principal foncé */
-            --font-family: 'Arial', sans-serif;
+            --primary-color: #002D62; /* Bleu foncé pour les accents (comme le 'Europa Expérience' précédent, pour un style pro) */
+            --secondary-color: #333; /* Texte principal */
+            --sidebar-bg: #f5f5f5; /* Fond gris très clair pour la barre latérale */
+            --light-grey: #ccc;
         }
 
         * {
@@ -20,241 +19,827 @@
             box-sizing: border-box;
         }
 
-        /* --- STRUCTURE DU DOCUMENT --- */
+        /* --- STRUCTURE GLOBALE --- */
         body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            color: var(--dark-text);
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: var(--secondary-color);
+            background-color: #eee;
             display: flex;
             justify-content: center;
-        }
-
-        #document-container {
-            width: 800px; /* Largeur fixe (A4 simulée) */
-            min-height: 1100px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden; /* Pour contenir les éléments absolus */
-        }
-
-        /* --- EN-TÊTE (Header) --- */
-        #header {
-            background-color: var(--dark-blue);
-            color: var(--light-text);
-            padding: 10px 40px;
-            text-align: right;
-            position: relative;
-            z-index: 10;
-        }
-        #header img {
-            height: 25px;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-        #header h2 {
-            display: inline-block;
-            font-size: 1.5em;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        /* Simuler l'image de fond (très complexe à reproduire en CSS simple) */
-        #background-image-simulation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 800px; /* Hauteur de la zone d'image */
-            /* En réalité, une image de fond serait utilisée ici */
-            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('europa-background.jpg'); 
-            background-size: cover;
-            background-position: center top;
-            opacity: 0.9;
-        }
-
-        /* --- TITRE PRINCIPAL (Visite Pédagogique) --- */
-        #main-title {
-            position: absolute;
-            top: 100px;
-            right: 40px;
-            width: 450px;
-            z-index: 20;
-            color: var(--dark-blue);
-        }
-        #main-title h1 {
-            font-size: 3em;
-            font-weight: 800;
-            line-height: 1.1;
-        }
-        #main-title p {
-            margin-top: 20px;
-            font-style: italic;
-            font-size: 1.1em;
-            color: var(--dark-text);
-            font-weight: 600;
-        }
-
-        /* --- BOÎTE ROUGE DE GAUCHE (Porte d'entrée) --- */
-        #left-red-box {
-            position: absolute;
-            top: 530px;
-            left: 40px;
-            width: 300px;
-            background-color: var(--red-accent);
-            color: var(--light-text);
             padding: 20px;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            line-height: 1.3;
-            /* Simulation du coin coupé */
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
-            z-index: 30;
         }
 
-        /* --- BOÎTE ROUGE PRINCIPALE (Planning Compte Rendu) --- */
-        #planning-box {
-            position: absolute;
-            top: 380px;
-            right: 0;
-            width: 480px;
-            background-color: var(--red-accent);
-            padding: 40px;
-            color: var(--light-text);
-            z-index: 25;
-            /* Simulation de l'inclinaison/du fond complexe */
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
-        }
-        #planning-box h2 {
-            font-size: 2em;
-            font-weight: 900;
-            margin-bottom: 30px;
-        }
-
-        /* --- ÉLÉMENTS DU PLANNING --- */
-        .planning-item {
+        #cv-container {
+            width: 900px; /* Largeur pour un rendu lisible */
+            min-height: 1100px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             display: flex;
-            margin-bottom: 25px;
-            align-items: flex-start;
         }
-        .planning-number {
-            font-size: 2em;
-            font-weight: 800;
-            margin-right: 15px;
-            line-height: 1;
-        }
-        .planning-content {
+
+        /* --- COLONNES --- */
+        #sidebar {
+            flex: 1; /* Environ 30% de la largeur */
+            padding: 40px 20px;
+            background-color: var(--sidebar-bg);
+            border-right: 2px solid var(--light-grey);
             font-size: 0.9em;
         }
 
-        /* --- SECTION PIED DE PAGE ET INFORMATIONS --- */
-        #info-date-block {
-            position: absolute;
-            bottom: 120px;
-            left: 40px;
-            width: 300px;
-            color: var(--dark-blue);
-            z-index: 30;
+        #main-content {
+            flex: 2; /* Environ 70% de la largeur */
+            padding: 40px;
         }
-        .date-box {
-            background-color: var(--dark-blue);
-            color: var(--light-text);
-            padding: 15px;
-            margin-top: 15px;
+
+        /* --- STYLES GÉNÉRAUX --- */
+        h2 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
-        .date-box h4 {
-            font-size: 1.2em;
-            font-weight: normal;
+
+        h2 .icon-sim {
+            margin-right: 10px;
+            font-size: 1.5em;
         }
-        .date-box p {
-            font-size: 2.5em;
+
+        p, ul {
+            margin-bottom: 15px;
+        }
+        
+        strong {
             font-weight: bold;
         }
 
-        #participants-footer {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            width: 720px;
-            color: var(--dark-blue);
-            font-size: 0.85em;
-            line-height: 1.4;
+        /* --- SIDEBAR STYLES --- */
+        #contact h1 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
-        #participants-footer strong {
+        #contact h3 {
+            font-size: 1.1em;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
+            margin-bottom: 5px;
+        }
+        .contact-detail span {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-detail a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Pour simuler l'icône de diplôme sur le profil */
+        .graduation-icon {
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin: 0 auto 20px auto;
+        }
+
+        /* --- MAIN CONTENT STYLES (Expériences & Formations) --- */
+        .section-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 100px;
+        }
+
+        .item-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 90px;
             font-weight: bold;
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+
+        .item-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .item-location {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .item-description ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.95em;
+        }
+
+        .item-description ul li::before {
+            content: "\2022"; /* Puce */
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Style spécifique pour les formations (dates en gras) */
+        .formation-entry .item-date {
+             top: 5px; /* Ajustement */
+        }
+        .formation-entry .item-title {
+            font-weight: normal;
+        }
+        .formation-entry .item-title strong {
+            color: var(--primary-color);
+        }
+        .formation-entry .item-details {
+            font-size: 0.95em;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div id="document-container">
+    <div id="cv-container">
 
-        <div id="background-image-simulation"></div>
-
-        <div id="header">
-            <img src="placeholder_logo.png" alt="Logo">
-            <h2>EUROPA EXPÉRIENCE</h2>
-        </div>
-
-        <div id="main-title">
-            <h1>Visite Pédagogique</h1>
-            <p>"Europa Expérience nous rappelle que l'objectif principal de l'Union européenne est de servir ses citoyens" , Roberta Metsola.</p>
-        </div>
-
-        <div id="left-red-box">
-            Porte d'entrée vers l'Europe, gratuite et ouverte à tous.
-        </div>
-
-        <div id="planning-box">
-            <h2>PLANNING COMPTE RENDU</h2>
-
-            <div class="planning-item">
-                <div class="planning-number">01</div>
-                <div class="planning-content">
-                    Projection du film instructif dans la salle de Cinéma à 360, au sous-sol.
-                    <p>L'Union européenne est une association politique et économique unique en son genre. Les pays membres ont mis en commun une grande partie de leurs souverainetés pour garantir la paix, la circulation et la promotion des valeurs démocratiques et de la neutralité climatique.</p>
-                </div>
+        <div id="sidebar">
+            
+            <div id="contact">
+                <div class="graduation-icon">🎓</div>
+                <h1 class="blinking-name">Chafika ZAAIMI</h1>
+                <h3>DOCUMENTALISTE / ARCHIVISTE</h3>
+                
+                <div class="contact-detail"><span role="img" aria-label="Location">📍</span> 7 Pl. Jules Verne, Pierrefitte-Sur-Seine.</div>
+                <div class="contact-detail"><span role="img" aria-label="Phone">📞</span> (33) 7 45 59 67 05</div>
+                <div class="contact-detail"><span role="img" aria-label="Email">📧</span> <a href="mailto:nyme87@gmail.com">nyme87@gmail.com</a></div>
+                <div class="contact-detail"><span role="img" aria-label="Email Pro">📧</span> <a href="mailto:chafika.zaaimi@etud.univ-paris8.fR">chafika.zaaimi@etud.univ-paris8.fR</a></div>
             </div>
 
-            <div class="planning-item">
-                <div class="planning-number">02</div>
-                <div class="planning-content">
-                    Salle de réalité augmentée, véritable laboratoire d'immersion pédagogique.
-                    <p>Ce dispositif interactif est un nouveau terrain de jeu pour les acteurs de demain : un mur de réalité augmentée permet aux jeunes de s'essayer à une zone d'interactivité. Il retrace l'histoire, les fonctions et les défis de l'Union européenne. Les jeunes peuvent se familiariser avec les institutions européennes, le tout enrichi de visualisations dynamiques sur des supports variés.</p>
-                </div>
+            <div id="profile-section">
+                <h2>PROFIL</h2>
+                <p>En recherche d'un **stage de 4 à 6 mois** pour la rédaction de mon mémoire de Master 2. Disponible à temps partiel dès **octobre 2025** ou à temps plein dès **premier février 2026**.</p>
             </div>
 
-            <div class="planning-item">
-                <div class="planning-number">03</div>
-                <div class="planning-content">
-                    Installations interactives et des écrans tactiles, attribuant un visage humain à l'Europe.
-                    <p>Les visiteurs peuvent se mettre dans la peau des institutions européennes, interagir avec les responsables politiques européens, ou s'informer sur les processus de prise de décision, en particulier les pouvoirs des 705 députés et de découvrir l'impact concret de l'Union. Des jeux sont également proposés, tout en se joignant à une galerie de portraits symbolique.</p>
+            <div id="skills-certifications-section">
+                <h2>CERTIFICATS</h2>
+                <div class="contact-detail"><strong>01/2015</strong> : Kebsal Yas: Formation aux métiers de centres d'appel.</div>
+                <div class="contact-detail"><strong>05/2023</strong> : TCF: C1, 17/20 en expression écrite.</div>
+            </div>
+
+            <div id="competences-section">
+                <h2>COMPÉTENCES</h2>
+                
+                <div class="skill-group">
+                    <strong>LANGUES</strong>
+                    <ul>
+                        <li>Arabe : Langue maternelle</li>
+                        <li>Français: Courant</li>
+                        <li>Anglais: Opérationnel</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <strong>LOGICIELS UTILISÉS</strong>
+                    <ul>
+                        <li>SIGB: **PMB**</li>
+                        <li>GED: **JLB, Alfresco**</li>
+                        <li>CMS: **SPIP, Omeka, WordPress**</li>
+                        <li>Flux RSS: **Inoreader**</li>
+                        <li>Bureautique: **TEAMS, EXCEL**</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="planning-item">
-                <div class="planning-number">04</div>
-                <div class="planning-content">
-                    Conclusion personnelle.
-                    <p>L'implantation de l'Europa Expérience à Paris, un lieu conçu pour accueillir les citoyens au cœur des institutions, a soulevé des enjeux d'immersion et de ludique simplifiant, pour un large public, des sujets parfois jugés complexes. Cette réussite souligne également la nécessité d'une veille informationnelle rigoureuse pour garantir la pertinence des contenus.</p>
+            <div id="qualites-section">
+                <h2>QUALITÉS</h2>
+                <ul>
+                    <li>Bonne orthographe</li>
+                    <li>Esprit d'équipe</li>
+                    <li>Adaptabilité</li>
+                    <li>Rigueur</li>
+                </ul>
+            </div>
+            
+            <div id="interet-section">
+                <h2>CENTRE D'INTÉRÊT</h2>
+                <ul>
+                    <li>Écriture</li>
+                    <li>Lecture</li>
+                    <li>Fiction</li>
+                    <li>Internet</li>
+                    <li>Sport</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="main-content">
+
+            <div id="formation-section">
+                <h2><span class="icon-sim">📚</span> FORMATION</h2>
+
+                <div class="section-item formation-entry">
+                    <div class="item-date">2025</div>
+                    <div class="item-details">
+                        <div class="item-title">Master 1 Humanités numériques, parcours **Gestion Stratégique d'Information**.</div>
+                        <span class="item-location">Université Paris 8, Saint-Denis - Mention bien.</span>
+                    </div>
+
+                    <div class="item-date">2024</div>
+                    <div class="item-details">
+                        <div class="item-title">Licence professionnelle en Métiers des Livres, mention Documentation et bibliothèques.</div>
+                        <span class="item-location">Université Paul Valéry Montpellier III, Montpellier - Mention assez bien.</span>
+                    </div>
+                    
+                    <div class="item-date">2023</div>
+                    <div class="item-details">
+                        <div class="item-title">Licence fondamentale en Études Françaises, parcours Linguistique.</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra - Mention Bien. (Major de promotion)</span>
+                    </div>
+
+                    <div class="item-date">2022</div>
+                    <div class="item-details">
+                        <div class="item-title">DEUG en Études Françaises.</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra - Mention Bien.</span>
+                    </div>
+                    
+                    <div class="item-date">2020</div>
+                    <div class="item-details">
+                        <div class="item-title">Première année en Droit Français. (Auditrice libre)</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra.</span>
+                    </div>
+                    
+                    <div class="item-date">2019</div>
+                    <div class="item-details">
+                        <div class="item-title">Baccalauréat libre en lettres et sciences humaines.</div>
+                        <span class="item-location">Mention bien.</span>
+                    </div>
+                    
+                    <div class="item-date">2016</div>
+                    <div class="item-details">
+                        <div class="item-title">Licence professionnelle en Automatique et Informatique Industrielle.</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra - Mention assez bien.</span>
+                    </div>
+                    
+                    <div class="item-date">2015</div>
+                    <div class="item-details">
+                        <div class="item-title">DEUG en sciences physiques.</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra - Admise.</span>
+                    </div>
                 </div>
             </div>
+            
+            <div id="experiences-section">
+                <h2><span class="icon-sim">💼</span> EXPÉRIENCES</h2>
+
+                <div class="section-item">
+                    <div class="item-date">04/25-07/25</div>
+                    <div class="item-title">DOCUMENTALISTE HOSPITALIER</div>
+                    <span class="item-location">HÔPITAL NOVO, PANTOISE</span>
+                    <div class="item-description">
+                        <ul>
+                            <li>Participation à la veille sanitaire et réglementaire;</li>
+                            <li>Gestion des réservations, des prêts et des retours;</li>
+                            <li>Suivi des abonnements et traitement documentaire des revues (bulletinage, dépouillement, archivage...);</li>
+                            <li>Équipement des ressources (couverture et étiquetage) en vue de leur mise en circulation;</li>
+                            <li>Gestion du courrier (réception et réexpédition des documents dans les services);</li>
+                            <li>Participation aux recherches d'articles et aux recherches documentaires pour les usagers.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-item">
+                    <div class="item-date">04/24-06/24</div>
+                    <div class="item-title">DOCUMENTALISTE TECHNIQUE</div>
+                    <span class="item-location">CEREMA, STRASBOURG</span>
+                    <div class="item-description">
+                        <ul>
+                            <li>Prise de connaissance des ressources, des thématiques de travail et des besoins du groupe;</li>
+                            <li>Proposition d'une méthode de classement et d'exploitation des documents techniques (axés sur la performance et l'efficacité énergétique);</li>
+                            <li>Mise en œuvre de la méthode de classement proposée;</li>
+                            <li>Formation des agents à la nouvelle méthode;</li>
+                            <li>Présentation du nouveau plan de classement et de la méthode de mise à jour des ressources.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-item">
+                    <div class="item-date">02/24-03/24</div>
+                    <div class="item-title">BIBLIOTHECAIRE</div>
+                    <span class="item-location">FONDATION ORIENT-OCCIDENT, RABAT</span>
+                    <div class="item-description">
+                        <ul>
+                            <li>Réalisation d'un état de lieu de l'existant (documentation);</li>
+                            <li>Répertorisation des photos et des documents de la FOO;</li>
+                            <li>Scannage et archivage les documents;</li>
+                            <li>Gestion de connaissances;</li>
+                            <li>Préconisations pour améliorer la classification physique et numérique ainsi que l'attrait du fond documentaire.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-item">
+                    <div class="item-date">01/17-07/18</div>
+                    <div class="item-title">ENSEIGNANTE</div>
+                    <span class="item-location">CRÈCHE, KÉNITRA</span>
+                    <div class="item-description">
+                        <ul>
+                            <li>Mise en place de sessions de soutien en soirée, visant à renforcer les compétences des élèves en mathématiques, physique et chimie à travers une approche organisée et divertissante.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-item">
+                    <div class="item-date">10/16-11/16</div>
+                    <div class="item-title">FORMATRICE</div>
+                    <span class="item-location">IFMIA, KÉNITRA</span>
+                    <div class="item-description">
+                        <ul>
+                            <li>Assistance du formateur-ingénieur dans l'animation des formations théoriques et pratiques dans le domaine de l'automatismo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="projets-section">
+                <h2><span class="icon-sim">💡</span> PROJETS</h2>
+                
+                <div class="section-item">
+                    <div class="item-date">01/2024</div>
+                    <div class="item-title">Revue de presse</div>
+                    <span class="item-location">De la création d'un projet ambitieux et d'envergure, mémorial ACTe.</span>
+                </div>
+            </div>
+
         </div>
 
-        <div id="info-date-block">
-            <div style="background-color: var(--red-accent); width: 50px; height: 50px; margin-bottom: 10px;"></div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+n'oublie pas l'image, et si tu peux j'aimerais bien que le nom et le prénom clignote
+
+
+Absolument ! Voici le code HTML complet et autonome qui reproduit le CV de Chafika ZAAIMI, y compris la mise en page à deux colonnes, le style soigné, et l'effet d'animation sur son nom, comme vous l'avez demandé.
+
+Vous pouvez copier l'intégralité du code ci-dessous, l'enregistrer dans un fichier avec l'extension .html (ex: cv_chafika.html), et l'ouvrir dans votre navigateur.
+
+HTML
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Chafika ZAAIMI</title>
+    <style>
+        /* --- DÉFINITION DES VARIABLES ET RÉINITIALISATION --- */
+        :root {
+            --primary-color: #002D62; /* Bleu foncé professionnel */
+            --secondary-color: #333; /* Texte principal */
+            --sidebar-bg: #f5f5f5; /* Fond gris clair pour la barre latérale */
+            --light-grey: #ccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- STRUCTURE GLOBALE --- */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: var(--secondary-color);
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #cv-container {
+            width: 900px;
+            min-height: 1100px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+
+        /* --- EFFET CLIGNOTANT SUR LE NOM --- */
+        @keyframes blink {
+            0%, 49% { color: var(--primary-color); }
+            50%, 100% { color: #555555; } /* Légèrement plus foncé ou gris */
+        }
+
+        .blinking-name {
+            animation: blink 2.5s step-end infinite;
+        }
+
+        /* --- COLONNES --- */
+        #sidebar {
+            flex: 1; /* Environ 30% de la largeur */
+            padding: 40px 20px;
+            background-color: var(--sidebar-bg);
+            border-right: 2px solid var(--light-grey);
+            font-size: 0.9em;
+        }
+
+        #main-content {
+            flex: 2; /* Environ 70% de la largeur */
+            padding: 40px;
+        }
+
+        /* --- STYLES GÉNÉRAUX --- */
+        h2 {
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-icon {
+            margin-right: 10px;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+
+        p, ul {
+            margin-bottom: 15px;
+        }
+
+        /* --- SIDEBAR STYLES --- */
+        #contact h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        #contact h3 {
+            font-size: 1.1em;
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-detail {
+            margin-bottom: 5px;
+        }
+        .contact-detail span {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Icône de diplôme (simulée) */
+        .graduation-icon {
+            border: 2px solid var(--light-grey);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin: 0 auto 20px auto;
+        }
+        
+        /* Listes de compétences/qualités */
+        #sidebar ul {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 10px;
+        }
+        #sidebar ul li {
+            position: relative;
+            margin-bottom: 5px;
+        }
+        #sidebar ul li::before {
+            content: "\2022";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* --- MAIN CONTENT STYLES (Expériences & Formations) --- */
+        .section-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 100px; /* Espace pour la date */
+            min-height: 40px;
+        }
+
+        .item-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 90px;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+
+        .item-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .item-location {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .item-description ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.95em;
+            margin-left: 10px;
+        }
+        .item-description ul li {
+            position: relative;
+            padding-left: 1em;
+            margin-bottom: 3px;
+        }
+        .item-description ul li::before {
+            content: "\2022";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Ajustements Formation */
+        .formation-entry .item-title strong {
+            color: var(--primary-color);
+        }
+        .formation-entry .item-details {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cv-container">
+
+        <div id="sidebar">
+
+            <div class="graduation-icon"></div>
+
+            <div id="contact">
+                <h1 class="blinking-name">Chafika ZAAIMI</h1>
+                <h3>DOCUMENTALISTE / ARCHIVISTE</h3>
+
+                <div class="contact-detail"><span role="img" aria-label="Location">📍</span> 7 Pl. [cite_start]Jules Verne, Pierrefitte-Sur-Seine. [cite: 18]</div>
+                [cite_start]<div class="contact-detail"><span role="img" aria-label="Phone">📞</span> (33) 7 45 59 67 05 [cite: 21]</div>
+                [cite_start]<div class="contact-detail"><span role="img" aria-label="Email">📧</span> nyme87@gmail.com [cite: 19]</div>
+                [cite_start]<div class="contact-detail"><span role="img" aria-label="Email Pro">📧</span> chafika.zaaimi@etud.univ-paris8.fR [cite: 20]</div>
+            </div>
             
-            <div class="date-box">
-                <h4>MERCREDI</h4>
-                <p>05.02.2025</p>
+            <hr>
+
+            <div id="profile-section">
+                <h2>PROFIL</h2>
+                [cite_start]<p>En recherche d'un **stage de 4 à 6 mois** pour la rédaction de mon mémoire de Master 2. [cite: 2] [cite_start]Disponible à temps partiel dès **octobre 2025** ou à temps plein dès **premier février 2026**. [cite: 3, 4]</p>
+            </div>
+            
+            <hr>
+
+            <div id="certificats-section">
+                <h2>CERTIFICATS</h2>
+                [cite_start]<div class="contact-detail">**01/2015** : Kebsal Yas: Formation aux métiers de centres d'appel. [cite: 27, 28]</div>
+                [cite_start]<div class="contact-detail">**05/2023** : TCF: C1, 17/20 en expression écrite. [cite: 29, 30]</div>
+            </div>
+
+            <hr>
+
+            <div id="competences-section">
+                <h2>COMPÉTENCES</h2>
+
+                <div class="skill-group">
+                    <strong>LANGUES</strong>
+                    <ul>
+                        [cite_start]<li>Arabe : Langue maternelle [cite: 78]</li>
+                        [cite_start]<li>Français: Courant [cite: 79]</li>
+                        [cite_start]<li>Anglais: Opérationnel [cite: 79]</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <strong>LOGICIELS UTILISÉS</strong>
+                    <ul>
+                        [cite_start]<li>SIGB: **PMB** [cite: 81]</li>
+                        [cite_start]<li>GED: **JLB, Alfresco** [cite: 82]</li>
+                        [cite_start]<li>CMS: **SPIP, Omeka, WordPress** [cite: 83, 84]</li>
+                        [cite_start]<li>Flux RSS: **Inoreader** [cite: 85]</li>
+                        [cite_start]<li>Bureautique: **TEAMS, EXCEL** [cite: 86, 87]</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr>
+
+            <div id="qualites-section">
+                <h2>QUALITÉS</h2>
+                <ul>
+                    [cite_start]<li>Bonne orthographe [cite: 68]</li>
+                    [cite_start]<li>Esprit d'équipe [cite: 69]</li>
+                    [cite_start]<li>Adaptabilité [cite: 70]</li>
+                    [cite_start]<li>Rigueur [cite: 71]</li>
+                </ul>
+            </div>
+            
+            <hr>
+
+            <div id="interet-section">
+                <h2>CENTRE D'INTÉRÊT</h2>
+                <ul>
+                    [cite_start]<li>Écriture [cite: 53]</li>
+                    [cite_start]<li>Lecture [cite: 58]</li>
+                    [cite_start]<li>Fiction [cite: 59]</li>
+                    [cite_start]<li>Internet [cite: 60]</li>
+                    [cite_start]<li>Sport [cite: 61]</li>
+                </ul>
             </div>
         </div>
 
-        <div id="participants-footer">
-            <p><strong>28 Place de la Madeleine, 75008 Paris.</strong></p>
-            <p><strong>Participants:</strong> Layla WOLD – Responsable de la communication et d’Europa Expérience Paris, étudiants du M1 GSI, et Mme Anne Lezon Rivière.</p>
+        <div id="main-content">
+
+            <div id="formation-section">
+                <h2><span class="section-icon">📚</span> FORMATION</h2>
+
+                <div class="section-item formation-entry">
+                    <div class="item-date">2025</div>
+                    <div class="item-details">
+                        [cite_start]<div class="item-title">Master 1 Humanités numériques, parcours **Gestion Stratégique d'Information**. [cite: 9, 10]</div>
+                        [cite_start]<span class="item-location">Université Paris 8, Saint-Denis - Mention bien. [cite: 8, 11]</span>
+                    </div>
+
+                    <div class="item-date">2024</div>
+                    <div class="item-details">
+                        <div class="item-title">Licence professionnelle en Métiers des Livres, mention Documentation et bibliothèques.</div>
+                        [cite_start]<span class="item-location">Université Paul Valéry Montpellier III, Montpellier - Mention assez bien. [cite: 12]</span>
+                    </div>
+                    
+                    <div class="item-date">2023</div>
+                    <div class="item-details">
+                        <div class="item-title">Licence fondamentale en Études Françaises, parcours Linguistique.</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra - Mention Bien. (Major de promotion) [cite_start][cite: 13, 14]</span>
+                    </div>
+
+                    <div class="item-date">2022</div>
+                    <div class="item-details">
+                        <div class="item-title">DEUG en Études Françaises.</div>
+                        [cite_start]<span class="item-location">Université Ibn Tofail, Kénitra - Mention Bien. [cite: 14]</span>
+                    </div>
+                    
+                    <div class="item-date">2020</div>
+                    <div class="item-details">
+                        <div class="item-title">Première année en Droit Français. (Auditrice libre) [cite_start][cite: 15, 16]</div>
+                        <span class="item-location">Université Ibn Tofail, Kénitra.</span>
+                    </div>
+                    
+                    <div class="item-date">2019</div>
+                    <div class="item-details">
+                        <div class="item-title">Baccalauréat libre en lettres et sciences humaines.</div>
+                        [cite_start]<span class="item-location">Mention bien. [cite: 17]</span>
+                    </div>
+                    
+                    <div class="item-date">2016</div>
+                    <div class="item-details">
+                        <div class="item-title">Licence professionnelle en Automatique et Informatique Industrielle.</div>
+                        [cite_start]<span class="item-location">Université Ibn Tofail, Kénitra - Mention assez bien. [cite: 22]</span>
+                    </div>
+                    
+                    <div class="item-date">2015</div>
+                    <div class="item-details">
+                        <div class="item-title">DEUG en sciences physiques.</div>
+                        [cite_start]<span class="item-location">Université Ibn Tofail, Kénitra - Admise. [cite: 23]</span>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div id="experiences-section">
+                <h2><span class="section-icon">💼</span> EXPÉRIENCES</h2>
+
+                <div class="section-item">
+                    <div class="item-date">04/25-07/25</div>
+                    [cite_start]<div class="item-title">DOCUMENTALISTE HOSPITALIER [cite: 36]</div>
+                    [cite_start]<span class="item-location">HÔPITAL NOVO, PANTOISE [cite: 39]</span>
+                    <div class="item-description">
+                        <ul>
+                            [cite_start]<li>Participation à la veille sanitaire et réglementaire; [cite: 40]</li>
+                            [cite_start]<li>Gestion des réservations, des prêts et des retours; [cite: 40]</li>
+                            [cite_start]<li>Suivi des abonnements et traitement documentaire des revues (bulletinage, dépouillement, archivage...); [cite: 41]</li>
+                            [cite_start]<li>Équipement des ressources (couverture et étiquetage) en vue de leur mise en circulation; [cite: 42]</li>
+                            [cite_start]<li>Gestion du courrier (réception et réexpédition des documents dans les services); [cite: 43]</li>
+                            [cite_start]<li>Participation aux recherches d'articles et aux recherches documentaires pour les usagers. [cite: 44]</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-item">
+                    <div class="item-date">04/24-06/24</div>
+                    [cite_start]<div class="item-title">DOCUMENTALISTE TECHNIQUE [cite: 38]</div>
+                    [cite_start]<span class="item-location">CEREMA, STRASBOURG [cite: 45]</span>
+                    <div class="item-description">
+                        <ul>
+                            [cite_start]<li>Prise de connaissance des ressources, des thématiques de travail et des besoins du groupe; [cite: 46]</li>
+                            [cite_start]<li>Proposition d'une méthode de classement et d'exploitation des documents techniques (axés sur la performance et l'efficacité énergétique); [cite: 47]</li>
+                            [cite_start]<li>Mise en œuvre de la méthode de classement proposée; [cite: 48]</li>
+                            [cite_start]<li>Formation des agents à la nouvelle méthode; [cite: 48]</li>
+                            [cite_start]<li>Présentation du nouveau plan de classement et de la méthode de mise à jour des ressources. [cite: 49]</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-item">
+                    <div class="item-date">02/24-03/24</div>
+                    [cite_start]<div class="item-title">BIBLIOTHECAIRE [cite: 52]</div>
+                    [cite_start]<span class="item-location">FONDATION ORIENT-OCCIDENT, RABAT [cite: 54]</span>
+                    <div class="item-description">
+                        <ul>
+                            [cite_start]<li>Réalisation d'un état de lieu de l'existant (documentation); [cite: 55]</li>
+                            [cite_start]<li>Répertorisation des photos et des documents de la FOO; [cite: 56]</li>
+                            [cite_start]<li>Scannage et archivage les documents; [cite: 56]</li>
+                            [cite_start]<li>Gestion de connaissances; [cite: 57]</li>
+                            [cite_start]<li>Préconisations pour améliorer la classification physique et numérique ainsi que l'attrait du fond documentaire. [cite: 64]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-item">
+                    <div class="item-date">01/17-07/18</div>
+                    [cite_start]<div class="item-title">ENSEIGNANTE [cite: 63]</div>
+                    [cite_start]<span class="item-location">CRÈCHE, KÉNITRA [cite: 65]</span>
+                    <div class="item-description">
+                        <ul>
+                            [cite_start]<li>Mise en place de sessions de soutien en soirée, visant à renforcer les compétences des élèves en mathématiques, physique et chimie à travers une approche organisée et divertissante. [cite: 66]</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-item">
+                    <div class="item-date">10/16-11/16</div>
+                    [cite_start]<div class="item-title">FORMATRICE [cite: 73]</div>
+                    [cite_start]<span class="item-location">IFMIA, KÉNITRA [cite: 74]</span>
+                    <div class="item-description">
+                        <ul>
+                            [cite_start]<li>Assistance du formateur-ingénieur dans l'animation des formations théoriques et pratiques dans le domaine de l'automatismo. [cite: 75]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div id="projets-section">
+                <h2><span class="section-icon">💡</span> PROJETS</h2>
+                
+                <div class="section-item">
+                    <div class="item-date">01/2024</div>
+                    <div class="item-title">Revue de presse</div>
+                    [cite_start]<span class="item-location">De la création d'un projet ambitieux et d'envergure, mémorial ACTe. [cite: 33, 34]</span>
+                </div>
+            </div>
+
         </div>
 
     </div>
