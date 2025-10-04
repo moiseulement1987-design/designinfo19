@@ -7,7 +7,7 @@
     <style>
         /* --- VARIABLES ET RÉINITIALISATION --- */
         :root {
-            --primary-color: #002D62; /* Bleu foncé pour les accents (comme le 'Europa Expérience' précédent, pour un style pro) */
+            --primary-color: #002D62; /* Bleu foncé pour les accents (pour un style pro) */
             --secondary-color: #333; /* Texte principal */
             --sidebar-bg: #f5f5f5; /* Fond gris très clair pour la barre latérale */
             --light-grey: #ccc;
@@ -37,7 +37,7 @@
         }
 
         #cv-container {
-            width: 900px; /* Largeur pour un rendu lisible */
+            width: 900px;
             min-height: 1100px;
             background-color: white;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -46,7 +46,7 @@
 
         /* --- COLONNES --- */
         #sidebar {
-            flex: 1; /* Environ 30% de la largeur */
+            flex: 1;
             padding: 40px 20px;
             background-color: var(--sidebar-bg);
             border-right: 2px solid var(--light-grey);
@@ -54,7 +54,7 @@
         }
 
         #main-content {
-            flex: 2; /* Environ 70% de la largeur */
+            flex: 2;
             padding: 40px;
         }
 
@@ -83,6 +83,23 @@
             font-weight: bold;
         }
 
+        /* --- PHOTO DE PROFIL (Ajouté) --- */
+        #profile-photo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Forme ronde */
+            overflow: hidden;
+            margin: 0 auto 30px auto; /* Centrage et marge */
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #profile-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* --- SIDEBAR STYLES --- */
         #contact h1 {
             font-size: 1.8em;
@@ -90,11 +107,13 @@
             margin-bottom: 5px;
             display: flex;
             align-items: center;
+            justify-content: center; /* Centrer le nom */
+            text-align: center;
         }
-        /* Style pour l'icône de diplôme à côté du nom */
+        
         .name-and-icon span {
             margin-right: 10px;
-            font-size: 1.2em; /* Taille de l'icône */
+            font-size: 1.2em;
         }
         
         #contact h3 {
@@ -102,11 +121,12 @@
             font-weight: normal;
             margin-bottom: 20px;
             color: var(--secondary-color);
+            text-align: center; /* Centrer la fonction */
         }
-        /* Style pour le titre clignotant */
+        
         .blinking-job {
             animation: blink 1.5s linear infinite;
-            font-weight: bold; /* Pour le faire ressortir davantage */
+            font-weight: bold;
         }
 
         .contact-detail {
@@ -136,12 +156,12 @@
             width: 90px;
             font-weight: bold;
             color: var(--primary-color);
-            font-size: 0.9em;
+            font-size: 0.9em; /* Taille standard pour l'alignement */
         }
 
         .item-title {
             font-size: 1.1em;
-            font-weight: bold;
+            font-weight: bold; /* Titre en gras pour les deux sections */
             color: var(--secondary-color);
             margin-bottom: 5px;
         }
@@ -168,23 +188,22 @@
             margin-left: -1em;
         }
 
-        /* Style spécifique pour les formations (dates en gras et plus grandes) */
+        /* CORRECTION: Suppression des styles conflictuels pour 'formation-entry'
+           pour que le style 'item-date' par défaut (identique à 'experience') s'applique. */
         .formation-entry .item-date {
-                top: 5px; /* Ajustement */
-                /* NOUVEAU STYLE POUR LES DATES DE FORMATION */
-                font-size: 1.2em; /* Plus grande */
-                color: var(--primary-color); /* Couleur principale */
-                font-weight: 900; /* Extra gras */
-        }
-        .formation-entry .item-title {
-            font-weight: normal;
-        }
-        .formation-entry .item-title strong {
+             /* J'ai supprimé ici les styles spécifiques qui causaient le décalage.
+                La règle .item-date générale est maintenant utilisée. */
+            top: 0; /* Assure le bon alignement */
+            font-size: 0.9em;
+            font-weight: bold;
             color: var(--primary-color);
         }
-        .formation-entry .item-details {
-            font-size: 0.95em;
-            margin-bottom: 10px;
+        
+        /* Assure que le titre de formation reste en gras pour la lisibilité,
+           même sans style fort sur la date. */
+        .formation-entry .item-title {
+            font-weight: bold;
+            color: var(--secondary-color);
         }
     </style>
 </head>
@@ -193,6 +212,10 @@
     <div id="cv-container">
 
         <div id="sidebar">
+            
+            <div id="profile-photo-container">
+                <img src="20230310_081738 (1).jpg" alt="Photo de profil de Chafika ZAAIMI">
+            </div>
             
             <div id="contact">
                 <h1 class="name-and-icon"><span role="img" aria-label="Graduation Cap">🎓</span> Chafika ZAAIMI</h1>
@@ -272,43 +295,57 @@
                         <div class="item-title">Master 1 Humanités numériques, parcours Gestion Stratégique d'Information.</div>
                         <span class="item-location">Université Paris 8, Saint-Denis - Mention bien.</span>
                     </div>
+                </div>
 
+                <div class="section-item formation-entry">
                     <div class="item-date">2024</div>
                     <div class="item-details">
                         <div class="item-title">Licence professionnelle en Métiers des Livres, mention Documentation et bibliothèques.</div>
                         <span class="item-location">Université Paul Valéry Montpellier III, Montpellier - Mention assez bien.</span>
                     </div>
-                    
+                </div>
+                
+                <div class="section-item formation-entry">
                     <div class="item-date">2023</div>
                     <div class="item-details">
                         <div class="item-title">Licence fondamentale en Études Françaises, parcours Linguistique.</div>
                         <span class="item-location">Université Ibn Tofail, Kénitra - Mention Bien. (Major de promotion)</span>
                     </div>
+                </div>
 
+                <div class="section-item formation-entry">
                     <div class="item-date">2022</div>
                     <div class="item-details">
                         <div class="item-title">DEUG en Études Françaises.</div>
                         <span class="item-location">Université Ibn Tofail, Kénitra - Mention Bien.</span>
                     </div>
-                    
+                </div>
+                
+                <div class="section-item formation-entry">
                     <div class="item-date">2020</div>
                     <div class="item-details">
                         <div class="item-title">Première année en Droit Français. (Auditrice libre)</div>
                         <span class="item-location">Université Ibn Tofail, Kénitra.</span>
                     </div>
-                    
+                </div>
+                
+                <div class="section-item formation-entry">
                     <div class="item-date">2019</div>
                     <div class="item-details">
                         <div class="item-title">Baccalauréat libre en lettres et sciences humaines.</div>
                         <span class="item-location">Mention bien.</span>
                     </div>
-                    
+                </div>
+                
+                <div class="section-item formation-entry">
                     <div class="item-date">2016</div>
                     <div class="item-details">
                         <div class="item-title">Licence professionnelle en Automatique et Informatique Industrielle.</div>
                         <span class="item-location">Université Ibn Tofail, Kénitra - Mention assez bien.</span>
                     </div>
-                    
+                </div>
+                
+                <div class="section-item formation-entry">
                     <div class="item-date">2015</div>
                     <div class="item-details">
                         <div class="item-title">DEUG en sciences physiques.</div>
