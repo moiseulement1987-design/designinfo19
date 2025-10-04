@@ -1,17 +1,16 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Gérard SERVEUR</title>
+    <title>Europa Expérience - Planning Compte Rendu</title>
     <style>
         /* --- VARIABLES ET RÉINITIALISATION --- */
         :root {
-            --primary-color: #333; /* Texte principal */
-            --accent-color: #f7b733; /* Couleur d'accent (Jaune/Orange) */
-            --sidebar-bg: #fffbe6; /* Fond de la colonne droite (Jaune très clair) */
-            --header-photo-bg: #4a4a4a; /* Fond de la section photo (Gris foncé/Marron) */
+            --dark-blue: #002D62; /* Bleu foncé pour les titres et le pied de page */
+            --red-accent: #E53935; /* Rouge vif pour l'accent et la boîte principale */
+            --light-text: #FFFFFF; /* Texte blanc */
+            --dark-text: #333333; /* Texte principal foncé */
             --font-family: 'Arial', sans-serif;
         }
 
@@ -21,294 +20,241 @@
             box-sizing: border-box;
         }
 
-        /* --- STRUCTURE GÉNÉRALE --- */
+        /* --- STRUCTURE DU DOCUMENT --- */
         body {
             font-family: var(--font-family);
             line-height: 1.6;
-            color: var(--primary-color);
+            color: var(--dark-text);
             background-color: #f4f4f4;
-            padding: 20px;
             display: flex;
             justify-content: center;
         }
 
-        #cv-container {
-            width: 900px; /* Largeur fixe pour le CV */
-            display: flex; /* Active la disposition en colonnes */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        #document-container {
+            width: 800px; /* Largeur fixe (A4 simulée) */
+            min-height: 1100px;
             background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden; /* Pour contenir les éléments absolus */
         }
 
-        /* --- EFFET CLIGNOTANT (AJOUTÉ) --- */
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.1; } /* Presque invisible à mi-chemin */
-            100% { opacity: 1; }
+        /* --- EN-TÊTE (Header) --- */
+        #header {
+            background-color: var(--dark-blue);
+            color: var(--light-text);
+            padding: 10px 40px;
+            text-align: right;
+            position: relative;
+            z-index: 10;
         }
-
-        .clignotant {
-            animation: blink 1.5s step-end infinite; /* Clignote toutes les 1.5 secondes */
+        #header img {
+            height: 25px;
+            vertical-align: middle;
+            margin-right: 10px;
         }
-
-        /* --- COLONNE GAUCHE (Contenu Principal) --- */
-        #primary-content {
-            flex: 2; /* Prend environ 65% de la largeur */
-            padding: 40px 30px;
-            border-right: 1px solid #eee;
-        }
-
-        h1 {
-            font-size: 2em;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        h2 {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
-            font-weight: 400;
-        }
-
-        /* Titres de sections (À propos, Expériences, Formation) */
-        #primary-content h3 {
-            font-size: 1.2em;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        /* À propos de moi */
-        #a-propos p {
-            margin-bottom: 20px;
-            font-style: italic;
-            font-size: 0.95em;
-        }
-
-        /* Expériences et Formation */
-        .experience {
-            margin-bottom: 20px;
-        }
-        .experience p:first-child { /* Date et Titre */
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .experience ul, #formation ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-        .experience ul li::before, #formation ul li::before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
+        #header h2 {
             display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            font-size: 1.5em;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
-        .experience ul li, #formation ul li {
-            font-size: 0.9em;
-            margin-left: 1em;
+
+        /* Simuler l'image de fond (très complexe à reproduire en CSS simple) */
+        #background-image-simulation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 800px; /* Hauteur de la zone d'image */
+            /* En réalité, une image de fond serait utilisée ici */
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('europa-background.jpg'); 
+            background-size: cover;
+            background-position: center top;
+            opacity: 0.9;
         }
-        .experience p:last-child {
+
+        /* --- TITRE PRINCIPAL (Visite Pédagogique) --- */
+        #main-title {
+            position: absolute;
+            top: 100px;
+            right: 40px;
+            width: 450px;
+            z-index: 20;
+            color: var(--dark-blue);
+        }
+        #main-title h1 {
+            font-size: 3em;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        #main-title p {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 1.1em;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        /* --- BOÎTE ROUGE DE GAUCHE (Porte d'entrée) --- */
+        #left-red-box {
+            position: absolute;
+            top: 530px;
+            left: 40px;
+            width: 300px;
+            background-color: var(--red-accent);
+            color: var(--light-text);
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.3;
+            /* Simulation du coin coupé */
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+            z-index: 30;
+        }
+
+        /* --- BOÎTE ROUGE PRINCIPALE (Planning Compte Rendu) --- */
+        #planning-box {
+            position: absolute;
+            top: 380px;
+            right: 0;
+            width: 480px;
+            background-color: var(--red-accent);
+            padding: 40px;
+            color: var(--light-text);
+            z-index: 25;
+            /* Simulation de l'inclinaison/du fond complexe */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+        }
+        #planning-box h2 {
+            font-size: 2em;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        /* --- ÉLÉMENTS DU PLANNING --- */
+        .planning-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        .planning-number {
+            font-size: 2em;
+            font-weight: 800;
+            margin-right: 15px;
+            line-height: 1;
+        }
+        .planning-content {
             font-size: 0.9em;
-            margin-top: 10px;
-            color: #555;
+        }
+
+        /* --- SECTION PIED DE PAGE ET INFORMATIONS --- */
+        #info-date-block {
+            position: absolute;
+            bottom: 120px;
+            left: 40px;
+            width: 300px;
+            color: var(--dark-blue);
+            z-index: 30;
+        }
+        .date-box {
+            background-color: var(--dark-blue);
+            color: var(--light-text);
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .date-box h4 {
+            font-size: 1.2em;
+            font-weight: normal;
+        }
+        .date-box p {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        #participants-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            width: 720px;
+            color: var(--dark-blue);
+            font-size: 0.85em;
             line-height: 1.4;
         }
-
-        /* --- COLONNE DROITE (Barre Latérale) --- */
-        #sidebar-content {
-            flex: 1; /* Prend environ 35% de la largeur */
-            background-color: var(--sidebar-bg);
-            padding: 0;
-        }
-
-        /* Section Contact (Photo et infos) */
-        #contact {
-            background-color: var(--header-photo-bg);
-            padding: 20px;
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        #photo-placeholder {
-            height: 250px;
-            background-color: #666;
-            margin: -20px -20px 20px -20px;
-            /* Le fond gris reste si l'image ne charge pas */
-        }
-        
-        /* NOUVEAU STYLE POUR LA BALISE IMAGE */
-        #photo-placeholder img {
-            width: 100%; /* L'image prend toute la largeur du conteneur */
-            height: 100%; /* L'image prend toute la hauteur du conteneur */
-            object-fit: cover; /* Recadre l'image pour qu'elle remplisse le conteneur sans déformation */
-            display: block; /* Évite les problèmes d'espace blanc sous l'image */
-        }
-        /* FIN NOUVEAU STYLE */
-
-        #contact h3 { display: none; }
-        
-        #contact p {
-            margin-bottom: 8px;
-            font-size: 0.9em;
-        }
-
-        /* Compétences, Qualités, Centres d'intérêt */
-        #sidebar-content section:not(#contact) {
-            padding: 0 20px;
-            margin-bottom: 20px;
-        }
-
-        #sidebar-content h3 {
-            font-size: 1.2em;
+        #participants-footer strong {
             font-weight: bold;
-            color: var(--primary-color);
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        /* La ligne sous les titres de la colonne droite */
-        #sidebar-content h3:after {
-            content: '';
-            display: block;
-            width: 50px; /* Une petite ligne */
-            height: 2px;
-            background: #ccc;
-            margin-top: 5px;
-        }
-
-        #sidebar-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        #sidebar-content ul li {
-            margin-bottom: 8px;
-            font-size: 0.9em;
-        }
-        #sidebar-content ul li::before {
-            content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
         }
     </style>
 </head>
 <body>
 
-    <div id="cv-container">
+    <div id="document-container">
 
-        <div id="primary-content">
-            <h1 class="clignotant">Gérard SERVEUR</h1>
-            <h2>Serveuse polyvalente - 6 ans en restauration</h2>
+        <div id="background-image-simulation"></div>
 
-            <section id="a-propos">
-                <h3>À propos de moi</h3>
-                <p>Serveur expérimenté, je possède 6 années d'expérience dans le domaine du service en salle et du bar. J'ai travaillé en tant que serveur dans divers cafés et restaurants, ce qui m'a aidé à améliorer mon efficacité durant le service et à anticiper et de répondre au mieux aux demandes des clients.</p>
-            </section>
-
-            <section id="experiences">
-                <h3>Expériences Professionnelles</h3>
-
-                <div class="experience">
-                    <p><strong>04/2019 - Aujourd'hui - Café du Commerce, Paris - Serveur au bar-restaurant</strong></p>
-                    <ul>
-                        <li>Service en salle</li>
-                        <li>Préparation des tables</li>
-                        <li>Présentation des menus</li>
-                        <li>Conseils pour le choix des plats et des boissons</li>
-                        <li>Préparation de cocktails et autres boissons alcoolisées</li>
-                        <li>Encaissement des règlements des clients</li>
-                    </ul>
-                    <p>Première expérience en tant que serveur au bar. Travailler au café du Commerce m'a aidé à acquérir davantage d'expérience dans la préparation de cocktails, mais aussi à m'adapter à un service multiple.</p>
-                </div>
-
-                <div class="experience">
-                    <p><strong>01/2015 - 04/2019 - Brasserie des Fleurs, Paris - Serveur</strong></p>
-                    <ul>
-                        <li>Service en salle</li>
-                        <li>Préparation des tables</li>
-                        <li>Traitement des commandes</li>
-                        <li>Encaissement des règlements des clients</li>
-                    </ul>
-                    <p>Ma plus longue expérience professionnelle à ce jour. J'ai découvert un peu l'entre univers et développé mon adaptation durant les différents services, tout en répondant au mieux aux demandes des clients aux heures creuses et aux heures de pointe.</p>
-                </div>
-
-                <div class="experience">
-                    <p><strong>02/2014 - 12/2014 - La Belle Vie, Paris - Serveur</strong></p>
-                    <ul>
-                        <li>Service en salle</li>
-                        <li>Préparation des tables</li>
-                        <li>Présentation des plats</li>
-                        <li>Traitement des commandes</li>
-                        <li>Aide à la préparation des desserts</li>
-                    </ul>
-                    <p>Ce premier emploi a contribué à solidifier les bases que j'ai acquises durant mes années de formation. J'ai eu l'occasion de découvrir de nouvelles techniques en cuisine et j'ai également appris à travailler plus rapidement et efficacement.</p>
-                </div>
-            </section>
-
-            <section id="formation">
-                <h3>Formation</h3>
-                <ul>
-                    <li><strong>2013</strong> - Certificat d'Aptitudes Professionnelles - Restaurant - Lycée Saint-Jacques - Paris</li>
-                    <li><strong>2011</strong> - Baccalauréat professionnel hôtellerie-restauration - Lycée hôtelier Voltaire, Paris</li>
-                    <li><strong>2008</strong> - Collège Saint-Dominique, Paris - Brevet des collèges obtenu avec mention assez bien</li>
-                </ul>
-            </section>
+        <div id="header">
+            <img src="placeholder_logo.png" alt="Logo">
+            <h2>EUROPA EXPÉRIENCE</h2>
         </div>
 
-        <div id="sidebar-content">
+        <div id="main-title">
+            <h1>Visite Pédagogique</h1>
+            <p>"Europa Expérience nous rappelle que l'objectif principal de l'Union européenne est de servir ses citoyens" , Roberta Metsola.</p>
+        </div>
 
-            <section id="contact">
-                <div id="photo-placeholder">
-                    <img src="ma-photo.webp" alt="Photo de profil de Gérard SERVEUR">
-                    </div>
-                
-                <h3>Contact</h3>
-                <p>+336 01 02 03 04</p>
-                <p>votre.nom.prenom@gmail.com</p>
-                <p>Marseille, France</p>
-                <p>linkedin.com/votre-profil</p>
-            </section>
+        <div id="left-red-box">
+            Porte d'entrée vers l'Europe, gratuite et ouverte à tous.
+        </div>
 
-            <section id="competences">
-                <h3>Compétences</h3>
-                <ul>
-                    <li>Traitement des commandes rapide</li>
-                    <li>Habilité à servir de l'alcool</li>
-                    <li>Gestion des stocks et du réassort</li>
-                    <li>Maîtrise de 2 langues étrangères : Anglais (bilingue) et Espagnol (compétence professionnelle)</li>
-                </ul>
-            </section>
+        <div id="planning-box">
+            <h2>PLANNING COMPTE RENDU</h2>
 
-            <section id="qualites">
-                <h3>Qualités</h3>
-                <ul>
-                    <li>Polyvalent</li>
-                    <li>Souriant</li>
-                    <li>Dynamique</li>
-                    <li>Capable de gérer les situations stressantes</li>
-                </ul>
-            </section>
+            <div class="planning-item">
+                <div class="planning-number">01</div>
+                <div class="planning-content">
+                    Projection du film instructif dans la salle de Cinéma à 360, au sous-sol.
+                    <p>L'Union européenne est une association politique et économique unique en son genre. Les pays membres ont mis en commun une grande partie de leurs souverainetés pour garantir la paix, la circulation et la promotion des valeurs démocratiques et de la neutralité climatique.</p>
+                </div>
+            </div>
 
-            <section id="interets">
-                <h3>Centres d'intérêt</h3>
-                <ul>
-                    <li>Tennis,</li>
-                    <li>Voyages (Espagne, Italie, Royaume-Uni, Grèce, Etats-Unis), lecture</li>
-                </ul>
-            </section>
+            <div class="planning-item">
+                <div class="planning-number">02</div>
+                <div class="planning-content">
+                    Salle de réalité augmentée, véritable laboratoire d'immersion pédagogique.
+                    <p>Ce dispositif interactif est un nouveau terrain de jeu pour les acteurs de demain : un mur de réalité augmentée permet aux jeunes de s'essayer à une zone d'interactivité. Il retrace l'histoire, les fonctions et les défis de l'Union européenne. Les jeunes peuvent se familiariser avec les institutions européennes, le tout enrichi de visualisations dynamiques sur des supports variés.</p>
+                </div>
+            </div>
+
+            <div class="planning-item">
+                <div class="planning-number">03</div>
+                <div class="planning-content">
+                    Installations interactives et des écrans tactiles, attribuant un visage humain à l'Europe.
+                    <p>Les visiteurs peuvent se mettre dans la peau des institutions européennes, interagir avec les responsables politiques européens, ou s'informer sur les processus de prise de décision, en particulier les pouvoirs des 705 députés et de découvrir l'impact concret de l'Union. Des jeux sont également proposés, tout en se joignant à une galerie de portraits symbolique.</p>
+                </div>
+            </div>
+            
+            <div class="planning-item">
+                <div class="planning-number">04</div>
+                <div class="planning-content">
+                    Conclusion personnelle.
+                    <p>L'implantation de l'Europa Expérience à Paris, un lieu conçu pour accueillir les citoyens au cœur des institutions, a soulevé des enjeux d'immersion et de ludique simplifiant, pour un large public, des sujets parfois jugés complexes. Cette réussite souligne également la nécessité d'une veille informationnelle rigoureuse pour garantir la pertinence des contenus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="info-date-block">
+            <div style="background-color: var(--red-accent); width: 50px; height: 50px; margin-bottom: 10px;"></div>
+            
+            <div class="date-box">
+                <h4>MERCREDI</h4>
+                <p>05.02.2025</p>
+            </div>
+        </div>
+
+        <div id="participants-footer">
+            <p><strong>28 Place de la Madeleine, 75008 Paris.</strong></p>
+            <p><strong>Participants:</strong> Layla WOLD – Responsable de la communication et d’Europa Expérience Paris, étudiants du M1 GSI, et Mme Anne Lezon Rivière.</p>
         </div>
 
     </div>
